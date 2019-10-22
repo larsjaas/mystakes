@@ -1,0 +1,9 @@
+/node_modules/
+/.metals/
+/.bloop/
+/out/
+/frontend/out/
+/frontend/dist/*.js
+/.vscode/
+.DS_Store
+/frontend/src/typescript/mapbox.ts

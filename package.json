@@ -1,0 +1,35 @@
+{
+  "name": "mystakes",
+  "description": "A system for organizing geographic/map-based locations",
+  "version": "0.0.0",
+  "author": "Lars J. Aas <lars.j.aas@gmail.com>",
+  "main": "",
+  "scripts": {
+    "test": "npm run unit",
+    "build": "npm run tsc",
+    "watch": "npm run tsc watch",
+    "run": "mill compile run"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "react": "16.10.1",
+    "react-dom": "16.10.1",
+    "react-map-gl": "^5.0.12"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.9",
+    "@types/react-dom": "^16.9.2",
+    "@types/react-map-gl": "^5.0.2",
+    "csstype": "^2.6.7",
+    "ts-loader": "^6.2.0",
+    "typescript": "3.6.3",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9"
+  },
+  "homepage": "https://github.com/larsjaas/mystakes",
+  "repository": {
+    "type": "git",
+    "URL": "https://github.com/larsjaas/mystakes.git"
+  }
+}
