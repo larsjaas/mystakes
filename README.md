@@ -4,6 +4,7 @@ For tracking your stakes.
 
 # setting up
 
+0. go to mapbox.com and register yourself to create your own, personal API key
 1. copy `frontend/src/typescript/mapbox.ts.sample` to `frontend/src/typescript/mapbox.ts` and
    update it to use your own Mapbox API key.
 2. edit `frontend/src/typescript/map.tsx` to use your latitude, longitude coordinate of choice.
@@ -15,8 +16,7 @@ For tracking your stakes.
 
 # structure
 
-backend/ - server implemented in scala using akka
-frontend/ - app in typescript using react
-
-build.sc - mill build config for the backend
-
+- `backend/` - server implemented in scala using akka
+- `frontend/` - app in typescript using react
+- `build.sc` - mill build config for the backend
+- `mill` - mill bootstrapping wrapper
