@@ -1,30 +1,61 @@
-import React, {Component} from 'react';
-import ReactMapGL from 'react-map-gl';
+import React, { useReducer } from 'react';
+import ReactMapGL, { ViewportProps } from 'react-map-gl';
 
 import { token } from './mapbox';
+import { normalizeViewportProps } from 'viewport-mercator-project';
 
-export class Map extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      viewport: {
-        width: 900,
-        height: 600,
-        // Trolla
-        latitude: 63.4500,  // north
-        longitude: 10.3000, // east
-        zoom: 14
-      }
-    };
-  }
+const Actions = {
+  SET_VIEWPORT: 'set-viewport'
+};
 
-  render() {
-    return (
-      <ReactMapGL
-        {...this.state.viewport}
-        onViewportChange={(viewport) => this.setState({viewport})}
-        mapboxApiAccessToken={token}
-      />
-    );
+const reducer = (state: any, action: Action) => {
+  switch (action.type) {
+    case Actions.SET_VIEWPORT: {
+      return {...state, viewport: action.viewport};
+    }
   }
 };
+
+class Action {
+  type: string;
+  viewport: ViewportProps;
+}
+
+class State {
+  viewport: ViewportProps;
+}
+
+const initialState: State = {
+  viewport: {
+    width: 900,
+    height: 600,
+    // Trolla
+    latitude: 63.4500,  // north
+    longitude: 10.3000, // east
+    zoom: 14,
+    bearing: 0,
+    pitch: 0,
+    altitude: 0,
+    maxZoom: 16,
+    minZoom: 1,
+    maxPitch: 0,
+    minPitch: 0
+
+  }
+};
+
+const Map = (style: any) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <ReactMapGL
+      {...state.viewport}
+      style={style}
+      mapStyle='mapbox://styles/mapbox/outdoors-v11'
+      onViewportChange={(viewport: ViewportProps) => dispatch({type: Actions.SET_VIEWPORT, viewport: viewport})}
+      mapboxApiAccessToken={token}
+    />
+  );
+};
+
+export { Map };
